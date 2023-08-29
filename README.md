@@ -149,3 +149,75 @@ import styles from 'App.module.scss';
     <div classNAme={styles.todo__content}>TodoContent</div>
 </div>;
 ```
+
+# 5.1 : AppBar or HeaderComponent
+
+-   ติดตั้ง library สำหรับทำ icon : `npm install react-icons` [link to npm](https://www.npmjs.com/package/react-icons) ,[link to document](https://react-icons.github.io/react-icons/)
+
+-   สร้างไฟล์ Header.jsx สำหรับทำ Header
+
+```jsx
+<header className='header'>
+    {/* Logo */}
+    <div className='header__logo'></div>
+
+    {/* Text */}
+    <div className='header__text'>
+        <h3>Todoist</h3>
+    </div>
+
+    {/* Search */}
+    <div className='header__search'></div>
+</header>
+```
+
+-   สร้างไฟล์ Header.module.scss สำหรับ css
+
+```scss
+// import global.scss
+.header {
+    background-color: $primary;
+    color: $grey-light;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__logo {
+        display: flex;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    &__text {
+        flex: 1;
+    }
+    &__search {
+        min-width: 300px;
+    }
+}
+```
+
+-   import styles มาใช้ใน JSX
+-   implement styles กับ className
+
+```jsx
+import styles from './Header.module.scss';
+
+// implement styles กับ className
+```
+
+#### 5.1.1 : Logo
+
+-   แทรก Logo Home ลงใน container
+
+```jsx
+import { FaHome } from 'react-icons/fa';
+```
+
+```jsx
+// add this code in return statement
+<div className='header__logo'>
+    <FaHome />
+</div>
+```
