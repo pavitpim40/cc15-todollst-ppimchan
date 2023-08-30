@@ -3,6 +3,7 @@ import './App.scss';
 import { FaHome, FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
 import Header from '../components/Header';
 import ListItem from '../components/ListItem';
+import Lists from '../components/Lists';
 
 function App() {
   // <ListItem text='Inbox' icon={<FaInbox />} active={true} />
@@ -26,11 +27,7 @@ function App() {
       <div className='todo__sidebar'>
         <aside className='sidebar'>
           <section className='sidebar__category'>
-            <ul className='list'>
-              {generalLists.map((obj) => (
-                <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
-              ))}
-            </ul>
+            <Lists data={generalLists} />
           </section>
           <section className='sidebar__category'>
             <div className='accordion'>
@@ -41,17 +38,9 @@ function App() {
                   <p className='accordion__item__text'>Projects</p>
                 </li>
               </div>
+
               {/* Lists */}
-              <ul className='list'>
-                {/* {projectLists.map((obj) => (
-                  <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
-                ))} */}
-                {projectLists.map((obj) => {
-                  obj.key = obj.id;
-                  delete obj.id;
-                  return <ListItem {...obj} />;
-                })}
-              </ul>
+              <Lists data={projectLists} />
             </div>
           </section>
         </aside>
@@ -62,3 +51,19 @@ function App() {
 }
 
 export default App;
+
+/* 
+ <ul className='list'>
+  // #1
+                 {projectLists.map((obj) => (
+                  <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
+                ))} 
+
+                // #2
+                {projectLists.map((obj) => {
+                  obj.key = obj.id;
+                  delete obj.id;
+                  return <ListItem {...obj} />;
+                })}
+</ul>
+*/
