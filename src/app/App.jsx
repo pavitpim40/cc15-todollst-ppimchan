@@ -5,6 +5,19 @@ import Header from '../components/Header';
 import ListItem from '../components/ListItem';
 
 function App() {
+  // <ListItem text='Inbox' icon={<FaInbox />} active={true} />
+
+  const generalLists = [
+    { id: 1, text: 'Inbox', icon: <FaInbox />, active: true },
+    { id: 2, text: 'Today', icon: <FaCalendar />, active: false },
+    { id: 3, text: 'Next 7 Days', icon: <FaCalendarAlt />, active: false },
+  ];
+
+  const projectLists = [
+    { id: 4, text: 'Project-A', icon: <FaInbox />, active: true },
+    { id: 5, text: 'Project-B', icon: <FaInbox />, active: false },
+  ];
+
   return (
     <div className='todo'>
       <div className='todo__header'>
@@ -14,9 +27,9 @@ function App() {
         <aside className='sidebar'>
           <section className='sidebar__category'>
             <ul className='list'>
-              <ListItem text='Inbox' icon={<FaInbox />} active={true} />
-              <ListItem text='Today' icon={<FaCalendar />} active={false} />
-              <ListItem text='Next 7 Days' icon={<FaCalendarAlt />} active={false} />
+              {generalLists.map((obj) => (
+                <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
+              ))}
             </ul>
           </section>
           <section className='sidebar__category'>
@@ -30,8 +43,14 @@ function App() {
               </div>
               {/* Lists */}
               <ul className='list'>
-                <ListItem text='Project-A' icon={<FaInbox />} active={true} />
-                <ListItem text='Project-B' icon={<FaInbox />} active={false} />
+                {/* {projectLists.map((obj) => (
+                  <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
+                ))} */}
+                {projectLists.map((obj) => {
+                  obj.key = obj.id;
+                  delete obj.id;
+                  return <ListItem {...obj} />;
+                })}
               </ul>
             </div>
           </section>
