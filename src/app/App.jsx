@@ -29,6 +29,7 @@ function App() {
           <section className='sidebar__category'>
             <Lists data={generalLists} />
           </section>
+
           <section className='sidebar__category'>
             <div className='accordion'>
               {/* Toggle */}
@@ -38,8 +39,6 @@ function App() {
                   <p className='accordion__item__text'>Projects</p>
                 </li>
               </div>
-
-              {/* Lists */}
               <Lists data={projectLists} />
             </div>
           </section>
@@ -51,6 +50,15 @@ function App() {
 }
 
 export default App;
+
+/* 
+Challenge : Refactor ให้ 2 section render UI ที่...
+  - OptionA (2/5) : render UI ต่างกัน <Lists/> กับ <Accordion /> 
+  - OptionB (4/5) : render UI เดียวกัน เช่น <Lists />
+  - OptionC (5/5) : render UI <Lists/> ภายใต้ <Accordion> <Lists/> </Accordion> 
+  // ใช้ props.children
+
+*/
 
 /* 
  <ul className='list'>
