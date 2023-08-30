@@ -457,3 +457,59 @@ li {
 
 - challenge : refactor to `<Accordion/>`
 - Tip : Reuse <Lists /> component
+
+# 6 : TodoContent
+
+- สร้างไฟล์ TodoContent
+
+```jsx
+<main className={styles.todo__container}>
+  {/* for Header */}
+  {/* for Create */}
+  {/* for Lists */}
+</main>
+```
+
+```scss
+.todo_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+```
+
+# 7 : Todo-header
+
+- สร้างไฟล์ TodoHeader.jsx
+- เพิ่ม markup และ implement css module
+- นำ TodoHeader ไป render ใน TodoContent
+
+```js
+export function TodoHeader() {
+  let today = new Date();
+  let options = { weekday: 'short', day: 'numeric', month: 'short' };
+
+  return (
+    <div className={styles.header}>
+      <h1 className={styles.header__text}>Inbox</h1>
+      <span className={styles.header__date}>{today.toLocaleDateString('en-US', options)}</span>
+    </div>
+  );
+}
+```
+
+```scss
+.header {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+
+  &__text {
+    font-size: 2.4rem;
+  }
+  &__date {
+    font-size: 1.2rem;
+    color: $grey-dark;
+  }
+}
+```

@@ -52,26 +52,25 @@ function App() {
 export default App;
 
 /* 
-Challenge : Refactor ให้ 2 section render UI ที่...
+Challenge-1 : Refactor ให้ 2 section render UI ที่...
   - OptionA (2/5) : render UI ต่างกัน <Lists/> กับ <Accordion /> 
   - OptionB (4/5) : render UI เดียวกัน เช่น <Lists />
   - OptionC (5/5) : render UI <Lists/> ภายใต้ <Accordion> <Lists/> </Accordion> 
   // ใช้ props.children
-
 */
 
 /* 
  <ul className='list'>
   // #1
-                 {projectLists.map((obj) => (
-                  <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
-                ))} 
+    {projectLists.map((obj) => (
+      <ListItem key={obj.id} text={obj.text} icon={obj.icon} active={obj.active} />
+    ))} 
 
-                // #2
-                {projectLists.map((obj) => {
-                  obj.key = obj.id;
-                  delete obj.id;
-                  return <ListItem {...obj} />;
-                })}
+    // #2
+    {projectLists.map((obj) => {
+      obj.key = obj.id;
+      delete obj.id;
+      return <ListItem {...obj} />;
+    })}
 </ul>
 */
