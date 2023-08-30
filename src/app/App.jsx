@@ -6,6 +6,7 @@ import ListItem from '../components/ListItem';
 import Lists from '../components/Lists';
 import TodoHeader from '../components/Todo/TodoHeader';
 import TodoCreate from '../components/Todo/TodoCreate';
+import TodoLists from '../components/Todo/TodoLists';
 
 function App() {
   // <ListItem text='Inbox' icon={<FaInbox />} active={true} />
@@ -50,8 +51,7 @@ function App() {
         <main className='todo__container'>
           <TodoHeader />
           <TodoCreate />
-
-          {/* TodoLists */}
+          <TodoLists />
         </main>
       </div>
     </div>
