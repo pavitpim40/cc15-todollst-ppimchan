@@ -7,7 +7,7 @@ $grey-light: #eaeaea;
 $grey-dark: #808080;
 $white: #fff;
 $header-height: 60px;
-$sidebar-width: 300px;
+$sidebar-width: 375px;
 
 // GLOBAL RESET
 *,
@@ -28,4 +28,8 @@ body {
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+    list-style: none;
 }
