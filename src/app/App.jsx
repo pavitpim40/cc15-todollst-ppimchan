@@ -1,9 +1,9 @@
 // Dependencies
 import './App.scss';
 import { FaHome, FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
-import Header from '../components/Header';
-import ListItem from '../components/ListItem';
-import Lists from '../components/Lists';
+import AppBar from '../components/Common/AppBar/AppBar';
+import ListItem from '../components/SideBar/ListItem';
+import Lists from '../components/SideBar/Lists';
 import TodoHeader from '../components/Todo/TodoHeader';
 import TodoCreate from '../components/Todo/TodoCreate';
 import TodoLists from '../components/Todo/TodoLists';
@@ -25,7 +25,7 @@ function App() {
   return (
     <div className='todo'>
       <div className='todo__header'>
-        <Header />
+        <AppBar />
       </div>
       <div className='todo__sidebar'>
         <aside className='sidebar'>
