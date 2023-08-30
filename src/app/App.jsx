@@ -1,6 +1,6 @@
 // Dependencies
 import './App.scss';
-import { FaHome, FaInbox, FaCalendar, FaCalendarAlt } from 'react-icons/fa';
+import { FaHome, FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
 import Header from '../components/Header';
 import ListItem from '../components/ListItem';
 
@@ -20,10 +20,20 @@ function App() {
             </ul>
           </section>
           <section className='sidebar__category'>
-            <ul className='lists'>
-              <ListItem text='Project-A' icon={<FaInbox />} active={true} />
-              <ListItem text='Project-B' icon={<FaInbox />} active={false} />
-            </ul>
+            <div className='accordion'>
+              {/* Toggle */}
+              <div className='accordion__toggle'>
+                <li className='accordion__item'>
+                  <FaChevronDown className='accordion__item__icon accordion__item__active' />
+                  <p className='accordion__item__text'>Projects</p>
+                </li>
+              </div>
+              {/* Lists */}
+              <ul className='list'>
+                <ListItem text='Project-A' icon={<FaInbox />} active={true} />
+                <ListItem text='Project-B' icon={<FaInbox />} active={false} />
+              </ul>
+            </div>
           </section>
         </aside>
       </div>
