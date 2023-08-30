@@ -7,6 +7,7 @@
   cursor: pointer;
   padding: $todo-content-padding;
   color: $grey-700;
+
   &:hover {
     & .todo__create__button {
       background-color: $primary;
@@ -22,7 +23,7 @@
     width: $circle;
     height: $circle;
     border-radius: 50%;
-    transition: all 0.1s;
+    transition: all 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
