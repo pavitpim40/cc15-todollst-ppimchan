@@ -6,14 +6,14 @@ function TodoLists() {
     <ul className={styles.todo__lists}>
       <li className={styles.todo}>
         <span className={styles.todo__checkbox}>{/* <FaRegCircle /> */}</span>
-        <p className={styles.todo__task}>TodoItem 1 </p>
-        <span className={styles.todo__date}>30 AUG</span>
+        <p className={styles.todo__task}>todo-item 1 </p>
+        <span className={styles.todo__date}>30 Aug</span>
         <div className={styles.todo__action}>
-          <span className={styles.todo__edit}>
-            <FaPen />
+          <span>
+            <FaPen className={styles.todo__edit} />
           </span>
-          <span className={styles.todo__delete}>
-            <FaTrashAlt />
+          <span>
+            <FaTrashAlt className={styles.todo__delete} />
           </span>
         </div>
       </li>

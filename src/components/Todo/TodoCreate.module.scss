@@ -2,10 +2,11 @@
 
 .todo__create {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   cursor: pointer;
-
+  padding: $todo-content-padding;
+  color: $grey-700;
   &:hover {
     & .todo__create__button {
       background-color: $primary;
@@ -18,22 +19,24 @@
   }
 
   &__button {
-    font-size: 2.4rem;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: $circle;
+    height: $circle;
     border-radius: 50%;
+    transition: all 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $circle * 0.75;
 
     // ทำให้ปุ่มอยู่กลาง
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 2.2rem;
+    // display: inline-block;
+    // vertical-align: middle;
+    // text-align: center;
   }
 
   &__text {
-    color: $grey-dark;
-    font-weight: 500;
-    font-size: 1.6rem;
+    font-weight: 600;
+    font-size: $text-2xl;
     line-height: 1.2rem;
   }
 }

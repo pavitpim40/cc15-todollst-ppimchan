@@ -18,7 +18,7 @@ function App() {
   ];
 
   const projectLists = [
-    { id: 4, text: 'Project-A', icon: <FaInbox />, active: true },
+    { id: 4, text: 'Project-A', icon: <FaInbox />, active: false },
     { id: 5, text: 'Project-B', icon: <FaInbox />, active: false },
   ];
 
