@@ -513,3 +513,117 @@ export function TodoHeader() {
   }
 }
 ```
+
+# 8 : CreateTodo
+
+```js
+<div className='create__todo'>
+  <span className='create__todo__icon'>+</span>
+  <h3 className='create__todo__text'>Add task</h3>
+</div>
+```
+
+```scss
+.create__todo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+
+  &__icon {
+    font-size: 2.4rem;
+    line-height: 2.2rem;
+    text-align: center;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+
+  &__text {
+    color: grey;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2rem;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+```
+
+# 9 : TodoForm
+
+```js
+<form className='todo__form__container'>
+  <input className='todo__form__input' placeholder='Task Name' />
+  <div className='todo__form__footer'>
+    <p className='todo__error'>Title is required</p>
+    <div className='todo__form__buttons'>
+      <button>Cancel</button>
+      <button>Add Task</button>
+    </div>
+  </div>
+</form>
+```
+
+```scss
+.todo__form__container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  gap: 10px;
+  border: 1px solid $grey-light;
+}
+
+.todo__form__input {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 100%;
+  font-size: 1.4rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.todo__form__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo__error {
+  justify-self: start;
+  padding: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  color: $primary;
+}
+.todo__form__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 1;
+
+  & > button {
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  & > button:last-child {
+    background-color: $primary;
+    color: $white;
+  }
+}
+```
