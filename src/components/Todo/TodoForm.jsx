@@ -16,6 +16,12 @@ CC1- Form Handle
   - type="button" :  <button type='submit'>2</button>
 */
 
+/* 
+props = {
+  textSubmit : string
+  setIsOpenForm : FN
+}
+*/
 function TodoForm(props) {
   const [isError, setIsError] = useState(true);
 
@@ -26,6 +32,9 @@ function TodoForm(props) {
 
   const handleCancel = function () {
     console.log('cancel');
+    // correctName : setIsOpenForm(false)
+    // inCorrectName : undefined(false) => บู้มเป็นโกโก้ครั้นซ์
+    props.setIsOpenForm(false);
   };
   return (
     <form onSubmit={handleSubmit} className={styles.todo__form__container}>
@@ -35,16 +44,8 @@ function TodoForm(props) {
       <div className={styles.todo__form__footer}>
         {isError ? <p className={styles.todo__error}>Title is required</p> : null}
         <div className={styles.todo__form__buttons}>
-          <Button 
-            text='Cancel' 
-            active={false} 
-            type='button' 
-            onClick={handleCancel}
-          />
+          <Button text='Cancel' active={false} type='button' onClick={handleCancel} />
           <Button text={props.textSubmit} active={true} type='submit' />
-          {/* <button type='button' onClick={handleCancel}>
-            POC
-          </button> */}
         </div>
       </div>
     </form>
