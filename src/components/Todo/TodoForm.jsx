@@ -23,21 +23,28 @@ props = {
 }
 */
 function TodoForm(props) {
-  const [isError, setIsError] = useState(true);
-  const [taskInput, setTaskInput] = useState('Do Hw');
-  // console.log(taskInput);
+  const [isError, setIsError] = useState(false);
+  const [taskInput, setTaskInput] = useState('');
 
   const handleChangeInput = function (event) {
-    // console.log('user typing...', event.target.value);
+    if (isError) setIsError(false);
     setTaskInput(event.target.value);
   };
 
   const handleSubmit = function (event) {
+    // 1. PreventDefault
     event.preventDefault();
-    // FormValidation
-    // case1 : submit ได้
-    // case2 : submit ไม่ได้ => แสดง Error
 
+    // 2.ต้องรู้ก่อนว่า User พิมพ์อะไร (อยู่ใน state : taskInput)
+
+    // 3.FormValidation
+    // case1 : submit ได้ => ไม่ error
+    // case2 : submit ไม่ได้ => แสดง Error
+    if (taskInput.trim() === '') {
+      console.log('Error');
+      setIsError(true);
+      return;
+    }
     console.log('submit');
   };
 
