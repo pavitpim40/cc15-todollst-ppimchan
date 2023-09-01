@@ -17,8 +17,7 @@ function TodoItem({ id, task, done, date, deleteTodo, editTodo }) {
   };
 
   const toggleStatus = () => {
-    const newTodoObj = { id, task, date, status: !done };
-    editTodo(id, newTodoObj);
+    editTodo(id, { status: !done });
   };
   return (
     <>

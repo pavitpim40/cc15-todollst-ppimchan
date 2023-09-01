@@ -45,10 +45,10 @@ function App() {
   };
 
   // edit : UpdateTodo
-  const editTodo = function (todoId, newTodoObj) {
+  const editTodo = function (todoId, updateTodoObj) {
     const newTodoLists = allTodos.reduce((acc, todo) => {
       if (todo.id !== todoId) acc.push(todo);
-      else acc.push({ ...todo, ...newTodoObj });
+      else acc.push({ ...todo, ...updateTodoObj });
       return acc;
     }, []);
     setAllTodos(newTodoLists);
