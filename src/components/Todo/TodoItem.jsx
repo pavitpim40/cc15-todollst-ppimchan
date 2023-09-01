@@ -9,9 +9,9 @@ import styles from './TodoItem.module.scss';
 // Object Destructuring (Props)
 // const { task, done, date } = props;
 
-function TodoItem({ task, done, date }) {
+function TodoItem({ id, task, done, date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
-
+  console.log(id);
   const handleClick = function () {
     setIsOpenForm(!isOpenForm);
   };
