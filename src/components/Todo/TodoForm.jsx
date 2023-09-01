@@ -32,26 +32,35 @@ function TodoForm(props) {
   };
 
   const handleSubmit = function (event) {
-    // 1. PreventDefault
     event.preventDefault();
 
-    // 2.ต้องรู้ก่อนว่า User พิมพ์อะไร (อยู่ใน state : taskInput)
-
-    // 3.FormValidation
-    // case1 : submit ได้ => ไม่ error
-    // case2 : submit ไม่ได้ => แสดง Error
+    // FormValidation
     if (taskInput.trim() === '') {
       console.log('Error');
       setIsError(true);
       return;
     }
-    console.log('submit');
+    console.log('submit === create new Todo');
+    // create NewTodo
+    // 1 - ส่ง Request ไปหลังบ้านเพื่อ save ลง Database
+    // 2 - ทำการอัพเดท State ของ AllTodo == React ทำการ Rerender
+    // data = []
+    // data = [{id:number,task:string,status:boolean,due_date:YYYY-MM-DD}]
+    // oldState = [{o},{o},{o}] === props.data
+    // newState = [{n},{o},{o},{o}]
+
+    const newTodo = {
+      id: props.data.length + 1,
+      task: taskInput,
+      status: false,
+      due_date: '2023-01-09',
+    };
+    const newTodoLists = [newTodo, ...props.data];
+    props.setTodo(newTodoLists);
+    props.setIsOpenForm(false);
   };
 
   const handleCancel = function () {
-    console.log('cancel');
-    // correctName : setIsOpenForm(false)
-    // inCorrectName : undefined(false) => บู้มเป็นโกโก้ครั้นซ์
     props.setIsOpenForm(false);
   };
   return (
