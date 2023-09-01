@@ -27,7 +27,7 @@ const data = [
 
 function App() {
   const [allTodos, setAllTodos] = useState(data);
-  console.log(dayjs().format('YYYY-MM-DD'));
+
   const addTodo = function (taskName) {
     const newTodo = {
       id: nanoid(),
@@ -49,7 +49,7 @@ function App() {
       <div className='todo__content'>
         <main className='todo__container'>
           <TodoHeader />
-          <TodoCreate data={allTodos} setTodo={setAllTodos} addTodo={addTodo} />
+          <TodoCreate addTodo={addTodo} />
           <TodoLists data={allTodos} />
         </main>
       </div>

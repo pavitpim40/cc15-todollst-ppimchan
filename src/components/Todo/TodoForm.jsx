@@ -34,16 +34,11 @@ function TodoForm(props) {
 
   const handleSubmit = function (event) {
     event.preventDefault();
-
-    // Validation
     if (taskInput.trim() === '') {
       setIsError(true);
       return;
     }
-
-    //send taskInput to addTodo
     props.addTodo(taskInput);
-
     props.setIsOpenForm(false);
   };
 

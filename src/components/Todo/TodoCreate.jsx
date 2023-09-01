@@ -63,13 +63,7 @@ function TodoCreate(props) {
   return (
     <>
       {isOpenForm ? (
-        <TodoForm
-          textSubmit='Add Task'
-          setIsOpenForm={setIsOpenForm}
-          data={props.data}
-          setTodo={props.setTodo}
-          addTodo={props.addTodo}
-        />
+        <TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm} addTodo={props.addTodo} />
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>
