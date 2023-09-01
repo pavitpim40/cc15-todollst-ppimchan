@@ -34,24 +34,15 @@ function TodoForm(props) {
 
   const handleSubmit = function (event) {
     event.preventDefault();
-    // START LOGIC : For CreateTODO
-    // FormValidation
+
+    // Validation
     if (taskInput.trim() === '') {
-      console.log('Error');
       setIsError(true);
       return;
     }
-    const newTodo = {
-      id: nanoid(),
-      task: taskInput,
-      status: false,
-      due_date: '2023-01-09',
-    };
-    // const newTodoLists = [newTodo, ...props.data];
-    // END LOGIC : For CreateTODO
 
-    // Update State
-    props.setTodo((prev) => [newTodo, ...prev]);
+    //send taskInput to addTodo
+    props.addTodo(taskInput);
 
     props.setIsOpenForm(false);
   };

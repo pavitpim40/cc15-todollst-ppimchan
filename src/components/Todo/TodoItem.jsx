@@ -11,7 +11,7 @@ import styles from './TodoItem.module.scss';
 
 function TodoItem({ id, task, done, date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
-  console.log(id);
+
   const handleClick = function () {
     setIsOpenForm(!isOpenForm);
   };
