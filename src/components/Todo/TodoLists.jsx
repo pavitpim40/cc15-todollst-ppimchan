@@ -22,6 +22,7 @@ function TodoLists(props) {
           done={todoObj.status}
           date={todoObj.due_date}
           deleteTodo={props.deleteTodo}
+          editTodo={props.editTodo}
         />
       ))}
     </ul>
