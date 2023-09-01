@@ -76,10 +76,18 @@ function App() {
     // setAllTodos(newTodoLists);
 
     // #Practice #2
-    const newTodoLists = allTodos.map(function (todo) {
-      if (todo.id !== todoId) return todo;
-      else return { ...todo, ...newTodoObj };
-    });
+    // const newTodoLists = allTodos.map(function (todo) {
+    //   if (todo.id !== todoId) return todo;
+    //   else return { ...todo, ...newTodoObj };
+    // });
+    // setAllTodos(newTodoLists);
+
+    // #Practice3
+    const newTodoLists = allTodos.reduce((acc, todo) => {
+      if (todo.id !== todoId) acc.push(todo);
+      else acc.push({ ...todo, ...newTodoObj });
+      return acc;
+    }, []);
     setAllTodos(newTodoLists);
   };
   return (
