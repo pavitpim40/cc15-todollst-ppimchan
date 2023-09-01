@@ -9,7 +9,7 @@ import styles from './TodoItem.module.scss';
 // Object Destructuring (Props)
 // const { task, done, date } = props;
 
-function TodoItem({ id, task, done, date }) {
+function TodoItem({ id, task, done, date, deleteTodo }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
 
   const handleClick = function () {
@@ -31,7 +31,7 @@ function TodoItem({ id, task, done, date }) {
               <FaPen className={styles.todo__edit} />
             </span>
             <span>
-              <FaTrashAlt className={styles.todo__delete} />
+              <FaTrashAlt className={styles.todo__delete} onClick={() => deleteTodo(id)} />
             </span>
           </div>
         </li>

@@ -38,6 +38,10 @@ function App() {
     setAllTodos((p) => [newTodo, ...p]);
   };
 
+  // delete
+  const deleteTodo = function (todoId) {
+    console.log(todoId);
+  };
   return (
     <div className='todo'>
       <div className='todo__header'>
@@ -50,7 +54,7 @@ function App() {
         <main className='todo__container'>
           <TodoHeader />
           <TodoCreate addTodo={addTodo} />
-          <TodoLists data={allTodos} />
+          <TodoLists data={allTodos} deleteTodo={deleteTodo} />
         </main>
       </div>
     </div>
