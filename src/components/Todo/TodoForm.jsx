@@ -34,30 +34,25 @@ function TodoForm(props) {
 
   const handleSubmit = function (event) {
     event.preventDefault();
-
+    // START LOGIC : For CreateTODO
     // FormValidation
     if (taskInput.trim() === '') {
       console.log('Error');
       setIsError(true);
       return;
     }
-    console.log('submit === create new Todo');
-    // create NewTodo
-    // 1 - ส่ง Request ไปหลังบ้านเพื่อ save ลง Database
-    // 2 - ทำการอัพเดท State ของ AllTodo == React ทำการ Rerender
-    // data = []
-    // data = [{id:number,task:string,status:boolean,due_date:YYYY-MM-DD}]
-    // oldState = [{o},{o},{o}] === props.data
-    // newState = [{n},{o},{o},{o}]
-
     const newTodo = {
       id: nanoid(),
       task: taskInput,
       status: false,
       due_date: '2023-01-09',
     };
-    const newTodoLists = [newTodo, ...props.data];
-    props.setTodo(newTodoLists);
+    // const newTodoLists = [newTodo, ...props.data];
+    // END LOGIC : For CreateTODO
+
+    // Update State
+    props.setTodo((prev) => [newTodo, ...prev]);
+
     props.setIsOpenForm(false);
   };
 
