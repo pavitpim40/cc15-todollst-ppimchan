@@ -28,7 +28,7 @@ const data = [
 function App() {
   const [allTodos, setAllTodos] = useState(data);
 
-  // add
+  // add : CreateTodo
   const addTodo = function (taskName) {
     const newTodo = {
       id: nanoid(),
@@ -39,50 +39,13 @@ function App() {
     setAllTodos((p) => [newTodo, ...p]);
   };
 
-  // delete
+  // delete : DeleteTodo
   const deleteTodo = function (todoId) {
-    console.log(todoId);
-
-    // Practice # 1
-    // let foundedIndex = allTodos.findIndex((todo) => todo.id === todoId);
-    // if (foundedIndex !== -1) {
-    //   const newTodoLists = [...allTodos];
-    //   newTodoLists.splice(foundedIndex, 1);
-    //   setAllTodos(newTodoLists);
-    // }
-
-    // Practice # 2
-    // const newTodoLists = allTodos.filter((todo) => todo.id !== todoId);
-    // setAllTodos(newTodoLists);
-
-    // Practice # 3
     setAllTodos((prev) => prev.filter((todo) => todo.id !== todoId));
   };
 
-  // edit
+  // edit : UpdateTodo
   const editTodo = function (todoId, newTodoObj) {
-    // console.log(todoId, newTodoObj);
-
-    // # Practice #1
-    // let foundedTodo = allTodos.find((todo) => todo.id === todoId);
-    // if (!foundedTodo) return;
-    // const newTodo = Object.assign({}, foundedTodo, newTodoObj);
-
-    // let foundedIndex = allTodos.findIndex((todo) => todo.id === todoId);
-    // if (foundedIndex === -1) return;
-
-    // const newTodoLists = [...allTodos];
-    // newTodoLists.splice(foundedIndex, 1, newTodo);
-    // setAllTodos(newTodoLists);
-
-    // #Practice #2
-    // const newTodoLists = allTodos.map(function (todo) {
-    //   if (todo.id !== todoId) return todo;
-    //   else return { ...todo, ...newTodoObj };
-    // });
-    // setAllTodos(newTodoLists);
-
-    // #Practice3
     const newTodoLists = allTodos.reduce((acc, todo) => {
       if (todo.id !== todoId) acc.push(todo);
       else acc.push({ ...todo, ...newTodoObj });
