@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './Search.module.scss';
 import useTodo from '../../../hooks/useTodo';
@@ -6,10 +6,21 @@ import useTodo from '../../../hooks/useTodo';
 function Search() {
   const [searchKeyword, setSearchKeyword] = useState('');
   const { searchTodo } = useTodo();
+  // ชะลอ การ search 1 วินาที && ค้นหาแค่ 1 ค้น
+
+  useEffect(() => {
+    let timeoutId = setTimeout(() => {
+      console.log('Search');
+      searchTodo(searchKeyword);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchKeyword]);
 
   const handleChangeInput = (e) => {
     setSearchKeyword(e.target.value);
-    searchTodo(e.target.value);
   };
   return (
     <div className={styles.search}>

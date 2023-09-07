@@ -13,6 +13,7 @@ function TodoContextProvider(props) {
 
   // Search
   const searchTodo = (keyword) => {
+    if (keyword.trim() === '') setShowTodos(allTodos);
     const newShowTodos = allTodos.filter((todoObj) =>
       todoObj.task.toLowerCase().includes(keyword.toLowerCase())
     );
