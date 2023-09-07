@@ -91,8 +91,6 @@ function App() {
 
   // edit : UpdateTodo
   const editTodo = async function (todoId, updateTodoObj) {
-    console.log(updateTodoObj);
-
     try {
       // FindTodo
       let foundedIndex = allTodos.findIndex((todo) => todo.id === todoId);
@@ -108,7 +106,6 @@ function App() {
         };
         const response = await fetch(`${END_POINT}/${todoId}`, options);
         const data = await response.json();
-        console.log(data.todo);
 
         // UpdateState
         const newTodoLists = [...allTodos];
@@ -118,13 +115,6 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-
-    // const newTodoLists = allTodos.reduce((acc, todo) => {
-    //   if (todo.id !== todoId) acc.push(todo);
-    //   else acc.push({ ...todo, ...updateTodoObj });
-    //   return acc;
-    // }, []);
-    // setAllTodos(newTodoLists);
   };
   return (
     <div className='todo'>
