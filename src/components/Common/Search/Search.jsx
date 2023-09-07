@@ -6,7 +6,7 @@ import useTodo from '../../../hooks/useTodo';
 function Search() {
   const [searchKeyword, setSearchKeyword] = useState('');
   const { searchTodo } = useTodo();
-  // ชะลอ การ search 1 วินาที && ค้นหาแค่ 1 ค้น
+  // ชะลอ การ search 1 วินาที && ค้นหาแค่ 1 ครั้ง
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {
