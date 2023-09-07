@@ -31,7 +31,7 @@ function App() {
   const [allTodos, setAllTodos] = useState([]);
 
   useEffect(() => {
-    // fetchAllTodo
+    // // fetchAllTodo
     async function fetchAllTodo() {
       try {
         let response = await fetch('http://localhost:8080/api/todos', { method: 'GET' });
@@ -42,7 +42,6 @@ function App() {
         console.log(error);
       }
     }
-
     fetchAllTodo();
   }, []);
 
@@ -91,13 +90,41 @@ function App() {
   };
 
   // edit : UpdateTodo
-  const editTodo = function (todoId, updateTodoObj) {
-    const newTodoLists = allTodos.reduce((acc, todo) => {
-      if (todo.id !== todoId) acc.push(todo);
-      else acc.push({ ...todo, ...updateTodoObj });
-      return acc;
-    }, []);
-    setAllTodos(newTodoLists);
+  const editTodo = async function (todoId, updateTodoObj) {
+    console.log(updateTodoObj);
+
+    try {
+      // FindTodo
+      let foundedIndex = allTodos.findIndex((todo) => todo.id === todoId);
+      if (foundedIndex !== -1) {
+        // updateTodo
+        const updatedTodo = { ...allTodos[foundedIndex], ...updateTodoObj };
+        const options = {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(updatedTodo),
+        };
+        const response = await fetch(`${END_POINT}/${todoId}`, options);
+        const data = await response.json();
+        console.log(data.todo);
+
+        // UpdateState
+        const newTodoLists = [...allTodos];
+        newTodoLists[foundedIndex] = data.todo;
+        setAllTodos(newTodoLists);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    // const newTodoLists = allTodos.reduce((acc, todo) => {
+    //   if (todo.id !== todoId) acc.push(todo);
+    //   else acc.push({ ...todo, ...updateTodoObj });
+    //   return acc;
+    // }, []);
+    // setAllTodos(newTodoLists);
   };
   return (
     <div className='todo'>
