@@ -25,7 +25,7 @@ function App() {
         <main className='todo__container'>
           <TodoHeader />
           <TodoCreate addTodo={addTodo} />
-          <TodoLists deleteTodo={deleteTodo} editTodo={editTodo} />
+          <TodoLists />
         </main>
       </div>
     </div>

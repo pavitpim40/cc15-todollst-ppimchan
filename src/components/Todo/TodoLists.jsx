@@ -3,7 +3,7 @@ import styles from './TodoLists.module.scss';
 import { useContext } from 'react';
 import { TodoContext } from '../../context/TodoContext';
 
-function TodoLists(props) {
+function TodoLists() {
   const { allTodos } = useContext(TodoContext);
 
   return (
@@ -15,8 +15,6 @@ function TodoLists(props) {
           task={todoObj.task}
           done={todoObj.status}
           date={todoObj.due_date}
-          deleteTodo={props.deleteTodo}
-          editTodo={props.editTodo}
         />
       ))}
     </ul>

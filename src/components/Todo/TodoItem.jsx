@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { FaTrashAlt, FaPen } from 'react-icons/fa';
 import { HiOutlineCheck } from 'react-icons/hi';
 
 import TodoForm from './TodoForm';
 import styles from './TodoItem.module.scss';
-import useTodo from '../../hooks/useTodo';
+// import useTodo from '../../hooks/useTodo';
+import { TodoContext } from '../../context/TodoContext';
 
 // function TodoItem(props) {
 // Object Destructuring (Props)
@@ -12,7 +13,8 @@ import useTodo from '../../hooks/useTodo';
 
 function TodoItem({ id, task, done, date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
-  const { deleteTodo, editTodo } = useTodo();
+  // const { deleteTodo, editTodo } = useTodo();
+  const { deleteTodo, editTodo } = useContext(TodoContext);
 
   const handleClick = function () {
     setIsOpenForm(!isOpenForm);
