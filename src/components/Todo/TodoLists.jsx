@@ -1,10 +1,9 @@
 import TodoItem from './TodoItem';
 import styles from './TodoLists.module.scss';
-import { useContext } from 'react';
-import { TodoContext } from '../../context/TodoContext';
+import useTodo from '../../hooks/useTodo';
 
 function TodoLists() {
-  const { allTodos } = useContext(TodoContext);
+  const { allTodos } = useTodo();
 
   return (
     <ul className={styles.todo__lists}>
