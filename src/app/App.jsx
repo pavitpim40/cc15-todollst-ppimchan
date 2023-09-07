@@ -11,13 +11,7 @@ import TodoLists from '../components/Todo/TodoLists';
 import useTodo from '../hooks/useTodo';
 
 function App() {
-  const { allTodos, addTodo, deleteTodo, editTodo, fetchAllTodo } = useTodo();
-  const sharedObj = useContext(TodoContext);
-  console.log(sharedObj);
-
-  useEffect(() => {
-    fetchAllTodo();
-  }, []);
+  const { addTodo, allTodos, deleteTodo, editTodo } = useContext(TodoContext);
 
   return (
     <div className='todo'>
@@ -31,7 +25,7 @@ function App() {
         <main className='todo__container'>
           <TodoHeader />
           <TodoCreate addTodo={addTodo} />
-          <TodoLists data={allTodos} deleteTodo={deleteTodo} editTodo={editTodo} />
+          <TodoLists deleteTodo={deleteTodo} editTodo={editTodo} />
         </main>
       </div>
     </div>
