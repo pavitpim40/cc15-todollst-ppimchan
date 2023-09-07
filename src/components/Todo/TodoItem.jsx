@@ -7,10 +7,6 @@ import styles from './TodoItem.module.scss';
 // import useTodo from '../../hooks/useTodo';
 import { TodoContext } from '../../context/TodoContext';
 
-// function TodoItem(props) {
-// Object Destructuring (Props)
-// const { task, done, date } = props;
-
 function TodoItem({ id, task, done, date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
   // const { deleteTodo, editTodo } = useTodo();
