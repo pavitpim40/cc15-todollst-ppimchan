@@ -57,6 +57,7 @@ function useTodo() {
 
   // #3 : Update
   const editTodo = async function (todoId, updateTodoObj) {
+    console.log('edit');
     try {
       // FindTodo
       let foundedIndex = allTodos.findIndex((todo) => todo.id === todoId);
