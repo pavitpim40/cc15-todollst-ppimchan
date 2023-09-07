@@ -1,6 +1,5 @@
 // Dependencies
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
 import './App.scss';
 import AppBar from '../components/Common/AppBar/AppBar';
@@ -8,22 +7,6 @@ import SideBar from '../components/SideBar/SideBar';
 import TodoHeader from '../components/Todo/TodoHeader';
 import TodoCreate from '../components/Todo/TodoCreate';
 import TodoLists from '../components/Todo/TodoLists';
-
-// const data = [
-//   { id: nanoid(), task: 'Suspendisse potenti.', status: false, due_date: '2023-04-26' },
-//   {
-//     id: nanoid(),
-//     task: 'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
-//     status: false,
-//     due_date: '2023-05-08',
-//   },
-//   {
-//     id: nanoid(),
-//     task: 'Aenean fermentum. Donec ut mauris eget massa tempor convallis.',
-//     status: false,
-//     due_date: '2023-04-30',
-//   },
-// ];
 
 const END_POINT = 'http://localhost:8080/api/todos';
 
@@ -103,6 +86,7 @@ function App() {
       if (foundedIndex !== -1) {
         // updateTodo
         const updatedTodo = { ...allTodos[foundedIndex], ...updateTodoObj };
+        updatedTodo.date = updatedTodo.due_date;
         const options = {
           method: 'PUT',
           headers: {
@@ -110,12 +94,13 @@ function App() {
           },
           body: JSON.stringify(updatedTodo),
         };
+
         const response = await fetch(`${END_POINT}/${todoId}`, options);
         const data = await response.json();
 
         // UpdateState
         const newTodoLists = [...allTodos];
-        newTodoLists[foundedIndex] = data.todo;
+        newTodoLists[foundedIndex] = { ...data.todo, due_date: data.todo.date };
         setAllTodos(newTodoLists);
       }
     } catch (error) {
