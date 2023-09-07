@@ -9,6 +9,15 @@ const TodoContext = createContext();
 // SetUp Context ฝั่ง Provider
 function TodoContextProvider(props) {
   const [allTodos, setAllTodos] = useState([]);
+  const [showTodos, setShowTodos] = useState([]);
+
+  // Search
+  const searchTodo = (keyword) => {
+    const newShowTodos = allTodos.filter((todoObj) =>
+      todoObj.task.toLowerCase().includes(keyword.toLowerCase())
+    );
+    setShowTodos(newShowTodos);
+  };
 
   // #2 : Read
   const fetchAllTodo = async () => {
@@ -22,6 +31,7 @@ function TodoContextProvider(props) {
         return newTodo;
       });
       setAllTodos(newTodoLists);
+      setShowTodos(newTodoLists);
     } catch (error) {
       console.log(error);
     }
@@ -57,6 +67,7 @@ function TodoContextProvider(props) {
 
       // Update STATE
       setAllTodos((p) => [createdTodo, ...p]);
+      setShowTodos((p) => [createdTodo, ...p]);
     } catch (error) {
       console.log(error);
     }
@@ -87,6 +98,7 @@ function TodoContextProvider(props) {
         const newTodoLists = [...allTodos];
         newTodoLists[foundedIndex] = { ...data.todo, due_date: data.todo.date };
         setAllTodos(newTodoLists);
+        setShowTodos(newTodoLists);
       }
     } catch (error) {
       console.log(error);
@@ -100,13 +112,22 @@ function TodoContextProvider(props) {
       let response = await fetch(`${END_POINT}/${todoId}`, options);
       if (response.status === 204) {
         setAllTodos((prev) => prev.filter((todo) => todo.id !== todoId));
+        setShowTodos((prev) => prev.filter((todo) => todo.id !== todoId));
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const sharedObj = { value: 60, allTodos, addTodo, fetchAllTodo, editTodo, deleteTodo };
+  const sharedObj = {
+    allTodos,
+    showTodos,
+    addTodo,
+    fetchAllTodo,
+    editTodo,
+    deleteTodo,
+    searchTodo,
+  };
 
   return <TodoContext.Provider value={sharedObj}>{props.children}</TodoContext.Provider>;
 }
