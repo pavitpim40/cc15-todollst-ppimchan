@@ -33,8 +33,6 @@ function App() {
     fetchAllTodo();
   }, []);
 
-  console.log('render');
-
   // add : CreateTodo
   const addTodo = async function (taskName) {
     const newTodo = {
@@ -64,7 +62,6 @@ function App() {
       console.log(error);
     }
   };
-
   // delete : DeleteTodo
   const deleteTodo = async function (todoId) {
     try {
@@ -77,7 +74,6 @@ function App() {
       console.log(error);
     }
   };
-
   // edit : UpdateTodo
   const editTodo = async function (todoId, updateTodoObj) {
     try {
