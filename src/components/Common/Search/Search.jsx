@@ -11,7 +11,7 @@ function Search() {
   useEffect(() => {
     let timeoutId = setTimeout(() => {
       console.log('Search');
-      searchTodo(searchKeyword);
+      if (searchKeyword.trim() !== '') searchTodo(searchKeyword);
     }, 1000);
 
     return () => {
