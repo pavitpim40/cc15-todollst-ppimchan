@@ -78,8 +78,16 @@ function App() {
   };
 
   // delete : DeleteTodo
-  const deleteTodo = function (todoId) {
-    setAllTodos((prev) => prev.filter((todo) => todo.id !== todoId));
+  const deleteTodo = async function (todoId) {
+    try {
+      const options = { method: 'DELETE' };
+      let response = await fetch(`${END_POINT}/${todoId}`, options);
+      if (response.status === 204) {
+        setAllTodos((prev) => prev.filter((todo) => todo.id !== todoId));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // edit : UpdateTodo
