@@ -7,29 +7,14 @@ import SideBar from '../components/SideBar/SideBar';
 import TodoHeader from '../components/Todo/TodoHeader';
 import TodoCreate from '../components/Todo/TodoCreate';
 import TodoLists from '../components/Todo/TodoLists';
+import useTodo from '../hooks/useTodo';
 
 const END_POINT = 'http://localhost:8080/api/todos';
 
 function App() {
-  const [allTodos, setAllTodos] = useState([]);
+  const { allTodos, setAllTodos, fetchAllTodo } = useTodo();
 
   useEffect(() => {
-    // // fetchAllTodo
-    async function fetchAllTodo() {
-      try {
-        let response = await fetch('http://localhost:8080/api/todos', { method: 'GET' });
-        let todoData = await response.json();
-
-        const newTodoLists = todoData.todos.map((todo) => {
-          const newTodo = { ...todo, due_date: todo.date };
-          delete todo.date;
-          return newTodo;
-        });
-        setAllTodos(newTodoLists);
-      } catch (error) {
-        console.log(error);
-      }
-    }
     fetchAllTodo();
   }, []);
 
